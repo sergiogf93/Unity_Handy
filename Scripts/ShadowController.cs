@@ -18,6 +18,6 @@ public class ShadowController : MonoBehaviour {
 
     bool IsUnderShadow()
     {
-        return true;
+        return false;
     }
 }
