@@ -6,6 +6,9 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent (typeof(ShadowController))]
 public class CharacterControl : MonoBehaviour
 {
+
+    private KeyCode k_shadowKey = KeyCode.LeftControl;
+
     private Character m_Character; // A reference to the ThirdPersonCharacter on the object
     private ShadowController m_ShadowController;
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -38,6 +41,10 @@ public class CharacterControl : MonoBehaviour
     {
         m_Jump = Input.GetButton("Jump");
 
+        if (Input.GetKeyDown(k_shadowKey))
+        {
+            print(m_ShadowController.IsUnderShadow());
+        }
     }
 
 
