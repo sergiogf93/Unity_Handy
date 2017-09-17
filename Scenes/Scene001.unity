@@ -487,12 +487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9807a19d1fbc4344bc6daedecd67877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
+  m_Target: {fileID: 610411671}
   m_AutoTargetPlayer: 1
   m_UpdateType: 0
-  m_MoveSpeed: 1
-  m_TurnSpeed: 1.5
-  m_TurnSmoothing: 0
+  m_MoveSpeed: 5
+  m_TurnSpeed: 2.75
+  m_TurnSmoothing: 10
   m_TiltMax: 75
   m_TiltMin: 45
   m_LockCursor: 0
@@ -733,10 +733,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 0.5
+  m_Radius: 0.4
+  m_Height: 0.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!54 &610411669
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -751,7 +751,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &610411670
 Animator:
@@ -971,6 +971,10 @@ Prefab:
     - target: {fileID: 100006, guid: 95bbe2885334e3c46b79c3419edb469c, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967294
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 95bbe2885334e3c46b79c3419edb469c, type: 2}
+      propertyPath: m_TagString
+      value: WallJumpable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95bbe2885334e3c46b79c3419edb469c, type: 2}

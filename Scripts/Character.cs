@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -50,7 +51,10 @@ public class Character : MonoBehaviour
         m_TurnAmount = Mathf.Atan2(move.x, move.z);
         m_ForwardAmount = move.z;
 
-        ApplyExtraTurnRotation();
+        if (!m_WallJump)
+        {
+            ApplyExtraTurnRotation();
+        }
 
         // control and velocity handling is different when grounded and airborne:
         if (m_IsGrounded)
@@ -75,6 +79,7 @@ public class Character : MonoBehaviour
         m_Animator.SetBool("OnGround", m_IsGrounded);
         m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
         m_Animator.SetBool("Shadow", m_Shadow);
+        m_Animator.SetBool("WallJump", m_WallJump);
 
         // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
         // which affects the movement speed because of the root motion.
@@ -111,6 +116,12 @@ public class Character : MonoBehaviour
         {
             m_MaxJumped = true;
         }
+
+        if (m_WallJump && jump)
+        {
+            Jump();
+        }
+
         m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.1f;
     }
 
@@ -122,17 +133,25 @@ public class Character : MonoBehaviour
         {
             if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
             {
-                // jump!
-                m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y + GetJumpForce(m_velocityVector.y), m_velocityVector.z);
-                m_IsGrounded = false;
-                m_Animator.applyRootMotion = false;
-                m_GroundCheckDistance = m_OrigGroundCheckDistance;
+                Jump();
             }
         }
         else if (!jump)
         {
             m_MaxJumped = false;
         }
+    }
+
+    private void Jump()
+    {
+        m_velocityVector.y = 0;
+        m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y + GetJumpForce(m_velocityVector.y), m_velocityVector.z);
+        m_IsGrounded = false;
+        m_Animator.applyRootMotion = false;
+        m_GroundCheckDistance = m_OrigGroundCheckDistance;
+        m_WallJump = false;
+        m_MaxJumped = false;
+        m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
     float GetJumpForce(float y)
@@ -142,13 +161,14 @@ public class Character : MonoBehaviour
 
     void Fall()
     {
-        if (m_velocityVector.y > -20)
+        int maxFallingVelocity = m_WallJump ? 2 : 20;
+        if (m_velocityVector.y > -maxFallingVelocity)
         {
             m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y - 1, m_velocityVector.z);
         }
         else
         {
-            m_velocityVector.y = -20;
+            m_velocityVector.y = -maxFallingVelocity;
         }
     }
 
@@ -172,8 +192,10 @@ public class Character : MonoBehaviour
         {
             m_GroundNormal = hitInfo.normal;
             m_IsGrounded = true;
+            m_WallJump = false;
             m_velocityVector.y = 0;
             m_Animator.applyRootMotion = true;
+            m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
         else
         {
@@ -185,14 +207,42 @@ public class Character : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Airborne"))
+        if (collision.collider.CompareTag("WallJumpable") && m_velocityVector.y <= 0)
         {
-            //if (collision.collider.tag)
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Airborne"))
+            {
+                PrepareWallJump();
+            }
         }
-        print(collision.collider.name);
-        //foreach (ContactPoint contact in collision.contacts)
-        //{
-        //    print(contact);
-        //}
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("WallJumpable") && m_velocityVector.y <= 0)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Airborne"))
+            {
+                PrepareWallJump();
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("WallJumpable"))
+        {
+            m_WallJump = false;
+            m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        }
+    }
+
+    void PrepareWallJump()
+    {
+        if (!m_WallJump)
+        {
+            m_WallJump = true;
+            m_velocityVector.y = 0;
+            m_Rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        }
     }
 }
