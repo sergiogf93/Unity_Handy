@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     Vector3 m_GroundNormal;
     Vector3 m_velocityVector = new Vector3(0, 0, 0);
     bool m_Shadow;
+    bool m_WallJump;
 
 
     void Start()
@@ -184,6 +185,10 @@ public class Character : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Airborne"))
+        {
+            //if (collision.collider.tag)
+        }
         print(collision.collider.name);
         //foreach (ContactPoint contact in collision.contacts)
         //{
