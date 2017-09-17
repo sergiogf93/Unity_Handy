@@ -144,7 +144,8 @@ public class Character : MonoBehaviour
         if (m_velocityVector.y > -20)
         {
             m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y - 1, m_velocityVector.z);
-        } else
+        }
+        else
         {
             m_velocityVector.y = -20;
         }
@@ -179,5 +180,14 @@ public class Character : MonoBehaviour
             m_GroundNormal = Vector3.up;
             m_Animator.applyRootMotion = false;
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        print(collision.collider.name);
+        //foreach (ContactPoint contact in collision.contacts)
+        //{
+        //    print(contact);
+        //}
     }
 }
