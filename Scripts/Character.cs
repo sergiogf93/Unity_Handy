@@ -110,6 +110,7 @@ public class Character : MonoBehaviour
         {
             m_MaxJumped = true;
         }
+        m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.1f;
     }
 
 
@@ -143,6 +144,9 @@ public class Character : MonoBehaviour
         if (m_velocityVector.y > -20)
         {
             m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y - 1, m_velocityVector.z);
+        } else
+        {
+            m_velocityVector.y = -20;
         }
     }
 
