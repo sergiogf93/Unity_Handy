@@ -6,13 +6,17 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent (typeof(ShadowController))]
 public class CharacterControl : MonoBehaviour
 {
+
+    private KeyCode k_shadowKey = KeyCode.Q;
+
     private Character m_Character; // A reference to the ThirdPersonCharacter on the object
     private ShadowController m_ShadowController;
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_CamForward;             // The current forward direction of the camera
     private Vector3 m_Move;
     private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-
+    private bool m_Shadow = false;
+    Animator m_Animator;
 
     private void Start()
     {
@@ -31,6 +35,7 @@ public class CharacterControl : MonoBehaviour
         // get the third person character ( this should never be null due to require component )
         m_Character = GetComponent<Character>();
         m_ShadowController = GetComponent<ShadowController>();
+        m_Animator = GetComponent<Animator>();
     }
 
 
@@ -38,6 +43,28 @@ public class CharacterControl : MonoBehaviour
     {
         m_Jump = Input.GetButton("Jump");
 
+        HandleShadowToggle();
+    }
+
+    private void HandleShadowToggle()
+    {
+        if (m_Shadow)
+        {
+            if (Input.GetKeyDown(k_shadowKey) || !m_ShadowController.IsUnderShadow())
+            {
+                m_Shadow = false;
+                ShadowToggle(0);
+            }
+        } else
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded") || m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ToMove"))
+            {
+                if (Input.GetKeyDown(k_shadowKey) && m_ShadowController.IsUnderShadow())
+                {
+                    m_Shadow = true;
+                }
+            }
+        }
     }
 
 
@@ -67,7 +94,14 @@ public class CharacterControl : MonoBehaviour
 #endif
 
         // pass all parameters to the character control script
-        m_Character.Move(m_Move, crouch, m_Jump);
+        m_Character.Move(m_Move, crouch, m_Jump, m_Shadow);
         //m_Jump = false;
     }
+
+    public void ShadowToggle(int toShadow)
+    {
+        GetComponentsInChildren<SkinnedMeshRenderer>()[0].enabled = toShadow != 1;
+        GetComponentsInChildren<MeshRenderer>()[0].enabled = toShadow == 1;
+    }
+
 }

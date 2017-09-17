@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     float m_ForwardAmount;
     Vector3 m_GroundNormal;
     Vector3 m_velocityVector = new Vector3(0, 0, 0);
+    bool m_Shadow;
 
 
     void Start()
@@ -34,9 +35,10 @@ public class Character : MonoBehaviour
     }
 
 
-    public void Move(Vector3 move, bool crouch, bool jump)
+    public void Move(Vector3 move, bool crouch, bool jump, bool shadow)
     {
         m_velocityVector = new Vector3(move.x * m_velocity * Time.deltaTime, m_velocityVector.y, move.z * m_velocity * Time.deltaTime);
+        m_Shadow = shadow;
         // convert the world relative moveInput vector into a local-relative
         // turn amount and forward amount required to head in the desired
         // direction.
@@ -71,6 +73,7 @@ public class Character : MonoBehaviour
         m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
         m_Animator.SetBool("OnGround", m_IsGrounded);
         m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+        m_Animator.SetBool("Shadow", m_Shadow);
 
         // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
         // which affects the movement speed because of the root motion.
@@ -107,6 +110,7 @@ public class Character : MonoBehaviour
         {
             m_MaxJumped = true;
         }
+        m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.1f;
     }
 
 
@@ -140,6 +144,9 @@ public class Character : MonoBehaviour
         if (m_velocityVector.y > -20)
         {
             m_velocityVector = new Vector3(m_velocityVector.x, m_velocityVector.y - 1, m_velocityVector.z);
+        } else
+        {
+            m_velocityVector.y = -20;
         }
     }
 

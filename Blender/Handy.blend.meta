@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9b4f21e789a679340bf107b7685fa282
-timeCreated: 1505137750
+timeCreated: 1505463978
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -8,154 +8,120 @@ ModelImporter:
     100000: ArmPivot
     100002: Char_A
     100004: Char_M
-    100006: customBone1
-    100008: customBone2
-    100010: customBone3
-    100012: customBone4
-    100014: customBone5
-    100016: customBone6
-    100018: Finger1_1
-    100020: Finger1_1_L
-    100022: Finger1_2
-    100024: Finger1_2_L
-    100026: Finger2_1
-    100028: Finger2_1_L
-    100030: Finger2_2
-    100032: Finger2_2_L
-    100034: Finger2_3
-    100036: Finger2_3_L
-    100038: Finger3_1
-    100040: Finger3_1_L
-    100042: Finger3_2
-    100044: Finger3_2_L
-    100046: Finger3_3
-    100048: Finger3_3_L
-    100050: Finger4_1
-    100052: Finger4_1_L
-    100054: Finger4_2
-    100056: Finger4_2_L
-    100058: Finger4_3
-    100060: Finger4_3_L
-    100062: Finger5_1
-    100064: Finger5_1_L
-    100066: Finger5_2
-    100068: Finger5_2_L
-    100070: Finger5_3
-    100072: Finger5_3_L
-    100074: Finger5_IK
-    100076: Finger5_IK_L
-    100078: hand1
-    100080: hand1_L
-    100082: hand2
-    100084: hand2_L
-    100086: hand3
-    100088: hand3_L
-    100090: //RootNode
-    100092: head
-    100094: LArm
-    100096: LFoot
-    100098: LHand
-    100100: LHandScale
-    100102: LLeg
-    100104: Lwrist
-    100106: Main
-    100108: RArm
-    100110: RFoot
-    100112: RHand
-    100114: RHandScale
-    100116: RLeg
-    100118: wrist
+    100006: Finger1_1
+    100008: Finger1_1_L
+    100010: Finger1_2
+    100012: Finger1_2_L
+    100014: Finger2_1
+    100016: Finger2_1_L
+    100018: Finger2_2
+    100020: Finger2_2_L
+    100022: Finger2_3
+    100024: Finger2_3_L
+    100026: Finger3_1
+    100028: Finger3_1_L
+    100030: Finger3_2
+    100032: Finger3_2_L
+    100034: Finger3_3
+    100036: Finger3_3_L
+    100038: Finger4_1
+    100040: Finger4_1_L
+    100042: Finger4_2
+    100044: Finger4_2_L
+    100046: Finger4_3
+    100048: Finger4_3_L
+    100050: Finger5_1
+    100052: Finger5_1_L
+    100054: Finger5_2
+    100056: Finger5_2_L
+    100058: Finger5_3
+    100060: Finger5_3_L
+    100062: Finger5_IK
+    100064: Finger5_IK_L
+    100066: hand1
+    100068: hand1_L
+    100070: hand2
+    100072: hand2_L
+    100074: hand3
+    100076: hand3_L
+    100078: //RootNode
+    100080: head
+    100082: LArm
+    100084: LFoot
+    100086: LHand
+    100088: LLeg
+    100090: Lwrist
+    100092: Main
+    100094: RArm
+    100096: RFoot
+    100098: RHand
+    100100: RLeg
+    100102: wrist
     400000: ArmPivot
     400002: Char_A
     400004: Char_M
-    400006: customBone1
-    400008: customBone2
-    400010: customBone3
-    400012: customBone4
-    400014: customBone5
-    400016: customBone6
-    400018: Finger1_1
-    400020: Finger1_1_L
-    400022: Finger1_2
-    400024: Finger1_2_L
-    400026: Finger2_1
-    400028: Finger2_1_L
-    400030: Finger2_2
-    400032: Finger2_2_L
-    400034: Finger2_3
-    400036: Finger2_3_L
-    400038: Finger3_1
-    400040: Finger3_1_L
-    400042: Finger3_2
-    400044: Finger3_2_L
-    400046: Finger3_3
-    400048: Finger3_3_L
-    400050: Finger4_1
-    400052: Finger4_1_L
-    400054: Finger4_2
-    400056: Finger4_2_L
-    400058: Finger4_3
-    400060: Finger4_3_L
-    400062: Finger5_1
-    400064: Finger5_1_L
-    400066: Finger5_2
-    400068: Finger5_2_L
-    400070: Finger5_3
-    400072: Finger5_3_L
-    400074: Finger5_IK
-    400076: Finger5_IK_L
-    400078: hand1
-    400080: hand1_L
-    400082: hand2
-    400084: hand2_L
-    400086: hand3
-    400088: hand3_L
-    400090: //RootNode
-    400092: head
-    400094: LArm
-    400096: LFoot
-    400098: LHand
-    400100: LHandScale
-    400102: LLeg
-    400104: Lwrist
-    400106: Main
-    400108: RArm
-    400110: RFoot
-    400112: RHand
-    400114: RHandScale
-    400116: RLeg
-    400118: wrist
-    2300000: customBone1
-    2300002: customBone2
-    2300004: customBone3
-    2300006: customBone4
-    2300008: customBone5
-    2300010: customBone6
-    3300000: customBone1
-    3300002: customBone2
-    3300004: customBone3
-    3300006: customBone4
-    3300008: customBone5
-    3300010: customBone6
-    4300000: customBone3
-    4300002: customBone5
-    4300004: customBone1
-    4300006: customBone2
-    4300008: Char_M
-    4300010: customBone6
-    4300012: customBone4
+    400006: Finger1_1
+    400008: Finger1_1_L
+    400010: Finger1_2
+    400012: Finger1_2_L
+    400014: Finger2_1
+    400016: Finger2_1_L
+    400018: Finger2_2
+    400020: Finger2_2_L
+    400022: Finger2_3
+    400024: Finger2_3_L
+    400026: Finger3_1
+    400028: Finger3_1_L
+    400030: Finger3_2
+    400032: Finger3_2_L
+    400034: Finger3_3
+    400036: Finger3_3_L
+    400038: Finger4_1
+    400040: Finger4_1_L
+    400042: Finger4_2
+    400044: Finger4_2_L
+    400046: Finger4_3
+    400048: Finger4_3_L
+    400050: Finger5_1
+    400052: Finger5_1_L
+    400054: Finger5_2
+    400056: Finger5_2_L
+    400058: Finger5_3
+    400060: Finger5_3_L
+    400062: Finger5_IK
+    400064: Finger5_IK_L
+    400066: hand1
+    400068: hand1_L
+    400070: hand2
+    400072: hand2_L
+    400074: hand3
+    400076: hand3_L
+    400078: //RootNode
+    400080: head
+    400082: LArm
+    400084: LFoot
+    400086: LHand
+    400088: LLeg
+    400090: Lwrist
+    400092: Main
+    400094: RArm
+    400096: RFoot
+    400098: RHand
+    400100: RLeg
+    400102: wrist
+    4300000: Char_M
     7400000: Default Take
-    7400002: PoseLib
-    7400004: Idle
-    7400006: WalkB
-    7400008: WalkF
-    7400010: WalkL
-    7400012: WalkR
-    7400014: AirDown
-    7400016: AirUp
-    7400018: Fall
-    7400020: WalkL_001
-    7400022: RunF
+    7400002: AirDown
+    7400004: AirUp
+    7400006: Fall
+    7400008: Idle
+    7400010: RunF
+    7400012: ToMove
+    7400014: ToShadow
+    7400016: WalkB
+    7400018: WalkF
+    7400020: WalkL
+    7400022: WalkR
     9500000: //RootNode
     13700000: Char_M
   materials:
@@ -193,7 +159,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -346,6 +312,69 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ToMove
+      takeName: ToMove
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ToShadow
+      takeName: ToShadow
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.96059114
+        functionName: ToShadowEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
